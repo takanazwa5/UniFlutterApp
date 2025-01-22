@@ -5,36 +5,49 @@ import 'package:dsw55388/utils/custom_header.dart';
 import 'package:dsw55388/utils/custom_input_field.dart';
 
 
-class SignUpView extends StatelessWidget {
+class SignUpView extends StatefulWidget {
   const SignUpView({super.key});
 
   @override
+  State<SignUpView> createState() => _SignUpViewState();
+}
+
+class _SignUpViewState extends State<SignUpView> {
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController confirmPasswordController = TextEditingController();
+
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SizedBox(height: 80),
-          backButton(context),
-          const SizedBox(height: 80),
-          header(),
-          const SizedBox(height: 50),
-          nameField(),
-          const SizedBox(height: 30),
-          emailField(),
-          const SizedBox(height: 30),
-          passwordField(),
-          const SizedBox(height: 30),
-          confirmPasswordField(),
-          const SizedBox(height: 80),
-          signUpButton(),
-          const SizedBox(height: 105),
-          signInLabel(context)
-        ],
-      )
+    return SafeArea(
+      child: Scaffold(
+          body: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: 80),
+                backButton(context),
+                const SizedBox(height: 80),
+                header(),
+                const SizedBox(height: 50),
+                nameField(nameController),
+                const SizedBox(height: 30),
+                emailField(emailController),
+                const SizedBox(height: 30),
+                passwordField(passwordController),
+                const SizedBox(height: 30),
+                confirmPasswordField(confirmPasswordController),
+                const SizedBox(height: 80),
+                signUpButton(),
+                const SizedBox(height: 105),
+                signInLabel(context)
+              ],
+            ),
+          )
+      ),
     );
   }
-
 
   Container backButton(BuildContext context) {
     return Container(
@@ -64,82 +77,79 @@ class SignUpView extends StatelessWidget {
     );
   }
 
-
   CustomHeader header() {
     return const CustomHeader(
       title: "Sign up",
     );
   }
 
-
-  CustomInputField nameField() {
-    return const CustomInputField(
+  CustomInputField nameField(TextEditingController controller) {
+    return CustomInputField(
       labelText: "Full Name",
       prefixIconPath: "assets/images/login_vector.png",
+      controller: controller,
     );
   }
 
-
-  CustomInputField emailField() {
-    return const CustomInputField(
+  CustomInputField emailField(TextEditingController controller) {
+    return CustomInputField(
       labelText: "Email",
       prefixIconPath: "assets/images/email_vector.png",
+      controller: controller,
     );
   }
 
-
-  CustomInputField passwordField() {
-    return const CustomInputField(
+  CustomInputField passwordField(TextEditingController controller) {
+    return CustomInputField(
       labelText: "Password",
       obscureText: true,
       prefixIconPath: "assets/images/password_vector.png",
       suffixIconPath: "assets/images/eye_vector.png",
+      controller: controller,
     );
   }
 
-
-  CustomInputField confirmPasswordField() {
-    return const CustomInputField(
+  CustomInputField confirmPasswordField(TextEditingController controller) {
+    return CustomInputField(
       labelText: "Confirm Password",
       obscureText: true,
       prefixIconPath: "assets/images/password_vector.png",
       suffixIconPath: "assets/images/eye_vector.png",
+      controller: controller,
     );
   }
-
 
   CustomButton signUpButton() {
     return const CustomButton(
-      text: "Sign up",  
+      text: "Sign up",
     );
   }
 
-
   Row signInLabel(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        const Text(
-          "Already have an account?",
-          style: TextStyle(
-            fontSize: 15,
-            color: CustomColors.purple,
-            fontWeight: FontWeight.w400,
-          ),
-        ),
-        TextButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: const Text(
-            "Sign in",
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Text(
+            "Already have an account?",
             style: TextStyle(
               fontSize: 15,
               color: CustomColors.purple,
-              fontWeight: FontWeight.w700,
+              fontWeight: FontWeight.w400,
             ),
           ),
-        ),
-      ]);
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: const Text(
+              "Sign in",
+              style: TextStyle(
+                fontSize: 15,
+                color: CustomColors.purple,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+          ),
+        ]);
   }
 }

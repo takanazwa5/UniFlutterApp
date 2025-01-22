@@ -7,6 +7,7 @@ class CustomInputField extends StatelessWidget {
   final String prefixIconPath;
   final String? suffixIconPath;
   final bool obscureText;
+  final TextEditingController controller;
 
   const CustomInputField({
     super.key,
@@ -14,25 +15,30 @@ class CustomInputField extends StatelessWidget {
     required this.prefixIconPath,
     this.suffixIconPath,
     this.obscureText = false,
+    required this.controller,
   });
+
 
   @override
   Widget build(BuildContext context) {
+    const myBorder = OutlineInputBorder(
+      borderRadius: BorderRadius.all(Radius.circular(15)),
+      borderSide: BorderSide(
+        color: CustomColors.lightPurple,
+        width: 2,
+      ),
+    );
     return Container(
       width: 390,
       height: 50,
       margin: const EdgeInsets.symmetric(horizontal: 21),
       child: TextFormField(
+        controller: controller,
         obscureText: obscureText,
         decoration: InputDecoration(
           labelText: labelText,
-          border: const OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(15)),
-            borderSide: BorderSide(
-              color: CustomColors.lightPurple,
-              width: 2,
-            ),
-          ),
+          enabledBorder: myBorder,
+          focusedBorder: myBorder,
           prefixIcon: Image.asset(
             prefixIconPath,
             width: 30,
@@ -40,10 +46,10 @@ class CustomInputField extends StatelessWidget {
           ),
           suffixIcon: suffixIconPath != null
               ? Image.asset(
-                  suffixIconPath!,
-                  width: 20,
-                  height: 20,
-                )
+            suffixIconPath!,
+            width: 20,
+            height: 20,
+          )
               : null,
         ),
       ),
