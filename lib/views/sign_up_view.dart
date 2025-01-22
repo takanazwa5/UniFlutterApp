@@ -23,29 +23,41 @@ class _SignUpViewState extends State<SignUpView> {
     return SafeArea(
       child: Scaffold(
           body: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            child: Stack(
               children: [
-                const SizedBox(height: 80),
-                backButton(context),
-                const SizedBox(height: 80),
-                header(),
-                const SizedBox(height: 50),
-                nameField(nameController),
-                const SizedBox(height: 30),
-                emailField(emailController),
-                const SizedBox(height: 30),
-                passwordField(passwordController),
-                const SizedBox(height: 30),
-                confirmPasswordField(confirmPasswordController),
-                const SizedBox(height: 80),
-                signUpButton(),
-                const SizedBox(height: 105),
-                signInLabel(context)
+                ellipse(),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(height: 80),
+                    backButton(context),
+                    const SizedBox(height: 80),
+                    header(),
+                    const SizedBox(height: 50),
+                    nameField(nameController),
+                    const SizedBox(height: 30),
+                    emailField(emailController),
+                    const SizedBox(height: 30),
+                    passwordField(passwordController),
+                    const SizedBox(height: 30),
+                    confirmPasswordField(confirmPasswordController),
+                    const SizedBox(height: 80),
+                    signUpButton(),
+                    const SizedBox(height: 105),
+                    signInLabel(context)
+                  ],
+                ),
               ],
             ),
           )
       ),
+    );
+  }
+
+  Container ellipse() {
+    return Container(
+      alignment: Alignment.topRight,
+      child: Image.asset("assets/images/ellipse.png"),
     );
   }
 
