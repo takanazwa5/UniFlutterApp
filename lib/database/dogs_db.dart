@@ -3,7 +3,6 @@ import 'package:dsw55388/database/models/dog.dart';
 import 'package:sqflite/sqflite.dart';
 
 class DogsDB {
-
   Future<void> createTable(Database database) async {
     await database.execute(
       """

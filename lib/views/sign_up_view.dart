@@ -4,7 +4,6 @@ import 'package:dsw55388/utils/custom_button.dart';
 import 'package:dsw55388/utils/custom_header.dart';
 import 'package:dsw55388/utils/custom_input_field.dart';
 
-
 class SignUpView extends StatefulWidget {
   const SignUpView({super.key});
 
@@ -22,34 +21,34 @@ class _SignUpViewState extends State<SignUpView> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          body: SingleChildScrollView(
-            child: Stack(
-              children: [
-                ellipse(),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const SizedBox(height: 80),
-                    backButton(context),
-                    const SizedBox(height: 80),
-                    header(),
-                    const SizedBox(height: 50),
-                    nameField(nameController),
-                    const SizedBox(height: 30),
-                    emailField(emailController),
-                    const SizedBox(height: 30),
-                    passwordField(passwordController),
-                    const SizedBox(height: 30),
-                    confirmPasswordField(confirmPasswordController),
-                    const SizedBox(height: 80),
-                    signUpButton(),
-                    const SizedBox(height: 105),
-                    signInLabel(context)
-                  ],
-                ),
-              ],
-            ),
-          )
+        body: SingleChildScrollView(
+          child: Stack(
+            children: [
+              ellipse(),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(height: 80),
+                  backButton(context),
+                  const SizedBox(height: 80),
+                  header(),
+                  const SizedBox(height: 50),
+                  nameField(nameController),
+                  const SizedBox(height: 30),
+                  emailField(emailController),
+                  const SizedBox(height: 30),
+                  passwordField(passwordController),
+                  const SizedBox(height: 30),
+                  confirmPasswordField(confirmPasswordController),
+                  const SizedBox(height: 80),
+                  signUpButton(),
+                  const SizedBox(height: 105),
+                  signInLabel(context)
+                ],
+              ),
+            ],
+          ),
+        )
       ),
     );
   }
@@ -139,29 +138,29 @@ class _SignUpViewState extends State<SignUpView> {
 
   Row signInLabel(BuildContext context) {
     return Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Text(
-            "Already have an account?",
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Text(
+          "Already have an account?",
+          style: TextStyle(
+            fontSize: 15,
+            color: CustomColors.purple,
+            fontWeight: FontWeight.w400,
+          ),
+        ),
+        TextButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: const Text(
+            "Sign in",
             style: TextStyle(
               fontSize: 15,
               color: CustomColors.purple,
-              fontWeight: FontWeight.w400,
+              fontWeight: FontWeight.w700,
             ),
           ),
-          TextButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            child: const Text(
-              "Sign in",
-              style: TextStyle(
-                fontSize: 15,
-                color: CustomColors.purple,
-                fontWeight: FontWeight.w700,
-              ),
-            ),
-          ),
-        ]);
+        ),
+      ]);
   }
 }

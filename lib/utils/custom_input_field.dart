@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:dsw55388/utils/custom_colors.dart';
 
-
 class CustomInputField extends StatelessWidget {
   final String labelText;
   final String prefixIconPath;
@@ -18,7 +17,6 @@ class CustomInputField extends StatelessWidget {
     required this.controller,
   });
 
-
   @override
   Widget build(BuildContext context) {
     const myBorder = OutlineInputBorder(
@@ -28,6 +26,7 @@ class CustomInputField extends StatelessWidget {
         width: 2,
       ),
     );
+
     return Container(
       width: 390,
       height: 50,
@@ -45,12 +44,11 @@ class CustomInputField extends StatelessWidget {
             height: 30,
           ),
           suffixIcon: suffixIconPath != null
-              ? Image.asset(
+            ? Image.asset(
             suffixIconPath!,
             width: 20,
             height: 20,
-          )
-              : null,
+            ) : null,
         ),
       ),
     );

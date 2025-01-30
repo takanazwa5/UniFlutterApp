@@ -4,7 +4,6 @@ import 'package:dsw55388/views/sign_in_view.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-
 class LandingView extends StatefulWidget {
   const LandingView({super.key});
 

@@ -24,5 +24,5 @@ class DB {
   }
 
   Future<void> create(Database database, int version) async =>
-      await DogsDB().createTable(database);
+    await DogsDB().createTable(database);
 }

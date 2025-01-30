@@ -7,7 +7,6 @@ import 'package:dsw55388/utils/custom_header.dart';
 import 'package:dsw55388/utils/custom_button.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-
 class SignInView extends StatefulWidget {
   const SignInView({super.key});
 
@@ -49,35 +48,35 @@ class _SignInViewState extends State<SignInView> {
 
   Row signUpLabel(BuildContext context) {
     return Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Text(
-            "Don't have an account?",
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Text(
+          "Don't have an account?",
+          style: TextStyle(
+            fontSize: 15,
+            color: CustomColors.purple,
+            fontWeight: FontWeight.w400,
+          ),
+        ),
+        TextButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const SignUpView(),
+              )
+            );
+          },
+          child: const Text(
+            "Sign up",
             style: TextStyle(
               fontSize: 15,
               color: CustomColors.purple,
-              fontWeight: FontWeight.w400,
+              fontWeight: FontWeight.w700,
             ),
           ),
-          TextButton(
-            onPressed: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const SignUpView(),
-                  )
-              );
-            },
-            child: const Text(
-              "Sign up",
-              style: TextStyle(
-                fontSize: 15,
-                color: CustomColors.purple,
-                fontWeight: FontWeight.w700,
-              ),
-            ),
-          ),
-        ]);
+        ),
+      ]);
   }
 
   CustomButton signInButton(BuildContext context) {
@@ -90,16 +89,16 @@ class _SignInViewState extends State<SignInView> {
           final SharedPreferences prefs = await SharedPreferences.getInstance();
           await prefs.setBool("isLoggedIn", true);
           Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const LandingView(),
-              )
+            context,
+            MaterialPageRoute(
+              builder: (context) => const LandingView(),
+            )
           );
         } else {
           ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
-                  content: Text("Wrong email or password")
-              )
+            const SnackBar(
+                content: Text("Wrong email or password")
+            )
           );
         }
       },
